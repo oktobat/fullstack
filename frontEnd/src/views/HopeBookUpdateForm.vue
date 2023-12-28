@@ -5,22 +5,20 @@
 		
 			<div class="word">
 			
-				<h3>REGISTER HOPE BOOK FORM</h3>
+				<h3>HOPE BOOK FORM</h3>
 				
 			</div>
 		
 			<div class="register_hope_book_form">
 			
-				<form name="register_hope_book_form" method="post">
-					<input type="hidden" name="u_m_no" v-bind:value="u_m_no"> <br>
-                    <input type="text" name="hb_name" v-model="hb_name" placeholder="도서명"> <br>
-					<input type="text" name="hb_author" v-model="hb_author" placeholder="저자"> <br>
-					<input type="text" name="hb_publisher" v-model="hb_publisher" placeholder="출판사"> <br>
-					<input type="text" name="hb_publish_year" v-model="hb_publish_year" placeholder="연도"> <br>
-					<input type="hidden" name="hb_result" v-bind:value="hb_result"> <br>
-					<input type="button" value="등록" @click="registerHopeBookForm();"> 
+				<form name="update_hope_book_form" method="post">
+                    <input type="text" name="hb_name" v-model="hb_name" v-bind:placeholder="item.hb_name"> <br>
+					<input type="text" name="hb_author" v-model="hb_author" v-bind:placeholder="item.hb_author"> <br>
+					<input type="text" name="hb_publisher" v-model="hb_publisher" v-bind:placeholder="item.hb_publisher"> <br>
+					<input type="text" name="hb_publish_year" v-model="hb_publish_year" v-bind:placeholder="item.hb_publish_year"> <br>
+					<input type="button" value="등록" @click="updateHopeBookForm();"> 
 					<input type="reset" value="취소">
-					
+					<router-link to="/getHopeBooks"><input type="button" value="목록"></router-link>
 				</form>
 				
 			</div>
@@ -32,27 +30,30 @@
 <script>
 import axios from 'axios';
 export default {
-    name:"HopeBookForm",
+    name:"HopeBookUpdateForm",
     data(){
         return {
-            u_m_no : 1,
-            hb_name : "",
-            hb_author : "",
-            hb_publisher : "",
-            hb_publish_year : "",
-            hb_result : 0
+            item : { }
+        }
+    },
+    created() {
+        const itemString = this.$route.query.item;
+        if (itemString) {
+            this.item = JSON.parse(itemString);
+            console.log(this.item);
         }
     },
     methods : {
-        registerHopeBookForm(){
+        updateHopeBookForm(){
 
             const formData = {
-                u_m_no: this.u_m_no,
-                hb_name: this.hb_name,
-                hb_author: this.hb_author,
-                hb_publisher: this.hb_publisher,
-                hb_publish_year: this.hb_publish_year,
-                hb_result: this.hb_result
+                hb_no : this.item.hb_no,
+                u_m_no: this.item.u_m_no,
+                hb_name: this.item.hb_name,
+                hb_author: this.item.hb_author,
+                hb_publisher: this.item.hb_publisher,
+                hb_publish_year: this.item.hb_publish_year,
+                hb_result: this.item.hb_result
             };
 
             console.log(formData);
@@ -66,7 +67,7 @@ export default {
             } else if (this.hb_publish_year == '') {
                 alert('INPUT BOOK PUBLISH YEAR.');
             } else {
-                axios.post('http://localhost:8090/api/registerHopeBookConfirm', formData, {
+                axios.post('http://localhost:8090/api/updateHopeBookConfirm', formData, {
                 headers : { 'Content-Type': 'application/json' }
                 })
                 .then((response)=>{

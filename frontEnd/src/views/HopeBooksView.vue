@@ -24,10 +24,11 @@
                   <th>발행연도</th>
                   <th>입고</th>
                   <th>삭제</th>
+                  <th>수정</th>
               </tr>
               </thead>
               <tbody>
-                  <tr v-for="item in result" v-bind:key="item.hb_no">
+                  <tr v-for="item in result" :key="item.hb_no">
                       <td>{{item.u_m_name}}</td>
                       <td>{{item.hb_name}}</td>
                       <td>{{item.hb_author}}</td>
@@ -35,6 +36,7 @@
                       <td>{{item.hb_publish_year}}</td>
                       <td>{{item.hb_result}}</td>
                       <td><button type="type" @click="fnDeleteItem(item.hb_no)">삭제</button></td>
+                      <td><router-link :to="{ name : 'hopeBookUpdateForm', query:{item : JSON.stringify(item)}}">수정</router-link></td>
                   </tr>
               </tbody>
 

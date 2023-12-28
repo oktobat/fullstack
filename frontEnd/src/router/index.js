@@ -18,10 +18,10 @@ const routes = [
     component: () => import('../views/HopeBookFormView.vue')
   },
   {
-      path: '/photoReview',
-      name: 'photoReview',
-      component: () => import('../views/PhotoReviewView.vue')
-    }
+    path: '/hopeBookUpdateForm',
+    name: 'hopeBookUpdateForm',
+    component: () => import('../views/HopeBookUpdateForm.vue')
+  },
 ]
 
 const router = createRouter({
