@@ -12,10 +12,10 @@
 			<div class="register_hope_book_form">
 			
 				<form name="update_hope_book_form" method="post">
-                    <input type="text" name="hb_name" v-model="hb_name" v-bind:placeholder="item.hb_name"> <br>
-					<input type="text" name="hb_author" v-model="hb_author" v-bind:placeholder="item.hb_author"> <br>
-					<input type="text" name="hb_publisher" v-model="hb_publisher" v-bind:placeholder="item.hb_publisher"> <br>
-					<input type="text" name="hb_publish_year" v-model="hb_publish_year" v-bind:placeholder="item.hb_publish_year"> <br>
+                    <input type="text" name="hb_name" v-model="item.hb_name"> <br>
+					<input type="text" name="hb_author" v-model="item.hb_author"> <br>
+					<input type="text" name="hb_publisher" v-model="item.hb_publisher"> <br>
+					<input type="text" name="hb_publish_year" v-model="item.hb_publish_year"> <br>
 					<input type="button" value="등록" @click="updateHopeBookForm();"> 
 					<input type="reset" value="취소">
 					<router-link to="/getHopeBooks"><input type="button" value="목록"></router-link>
