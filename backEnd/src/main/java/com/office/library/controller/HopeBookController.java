@@ -23,7 +23,7 @@ public class HopeBookController {
         return list;
     }
 
-    @GetMapping("/deleteHopeBook")
+    @DeleteMapping("/deleteHopeBook")
     public String deleteHopeBook(@RequestParam("hbNo") int hb_no) {
         hopeBookService.hopeBookDelete(hb_no);
         String message = "삭제됨";
@@ -37,13 +37,25 @@ public class HopeBookController {
         return message;
     }
 
-    @PostMapping("/updateHopeBookConfirm")
-    public String updateHopeBookConfirm(@RequestBody HopeBookDto hopeBookDto) {
-        System.out.println(hopeBookDto);
-        hopeBookService.modifyHopeBook(hopeBookDto);
-        String message = "성공";
-        return message;
-    }
+//    mybatis 프레임워크
+//    @PostMapping("/updateHopeBookConfirm")
+//    public String updateHopeBookConfirm(@RequestBody HopeBookDto hopeBookDto) {
+//        System.out.println(hopeBookDto);
+//        hopeBookService.modifyHopeBook(hopeBookDto);
+//        String message = "성공";
+//        return message;
+//    }
 
+        @PutMapping("/updateHopeBookConfirm")
+        public String updateHopeBookConfirm(@RequestBody TblHopeBook tblHopeBook) {
+            TblHopeBook tblHopeBookTemp = hopeBookService.hopeBookDetail(tblHopeBook.getHb_no());
+            tblHopeBookTemp.setHb_name(tblHopeBook.getHb_name());
+            tblHopeBookTemp.setHb_author(tblHopeBook.getHb_author());
+            tblHopeBookTemp.setHb_publisher(tblHopeBook.getHb_publisher());
+            tblHopeBookTemp.setHb_publish_year(tblHopeBook.getHb_publish_year());
+            hopeBookService.write(tblHopeBookTemp);
+            String message = "성공";
+            return message;
+        }
 
 }

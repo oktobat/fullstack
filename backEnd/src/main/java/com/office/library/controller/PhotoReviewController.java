@@ -76,8 +76,7 @@ public class PhotoReviewController {
     @PostMapping("/photoReviewModify")
     public String photoReviewModify(@RequestPart("data") TblPhotoReview tblPhotoReview,
                                     @RequestPart(name="file", required=false) Optional<MultipartFile[]> files){
-        Integer pr_no = tblPhotoReview.getPr_no();
-        TblPhotoReview tblPhotoReviewTemp = photoReviewService.photoReviewDetail(pr_no);
+        TblPhotoReview tblPhotoReviewTemp = photoReviewService.photoReviewDetail(tblPhotoReview.getPr_no());
         tblPhotoReviewTemp.setPr_name(tblPhotoReview.getPr_name());
         tblPhotoReviewTemp.setPr_author(tblPhotoReview.getPr_author());
         tblPhotoReviewTemp.setPr_publisher(tblPhotoReview.getPr_publisher());

@@ -12,10 +12,10 @@
         DELETE FROM tbl_hope_book WHERE hb_no=#{hb_no}
     </delete>
 
-    <update id="updateHopeBook" parameterType="com.office.library.dto.HopeBookDto">
-        UPDATE tbl_hope_book
-        SET hb_name=#{hb_name}, hb_author=#{hb_author}, hb_publisher=#{hb_publisher}, hb_publish_year=#{hb_publish_year}, hb_result=#{hb_result}
-        WHERE hb_no=#{hb_no}
-    </update>
+<!--    <update id="updateHopeBook" parameterType="com.office.library.dto.HopeBookDto">-->
+<!--        UPDATE tbl_hope_book-->
+<!--        SET hb_name=#{hb_name}, hb_author=#{hb_author}, hb_publisher=#{hb_publisher}, hb_publish_year=#{hb_publish_year}, hb_result=#{hb_result}-->
+<!--        WHERE hb_no=#{hb_no}-->
+<!--    </update>-->
 
 </mapper>

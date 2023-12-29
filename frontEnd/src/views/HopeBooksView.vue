@@ -79,7 +79,7 @@ export default {
     fnDeleteItem(hbNo){
         this.answer = confirm("정말로 삭제하시겠습니까?")
         if (this.answer) {
-            axios.get('http://localhost:8090/api/deleteHopeBook',{
+            axios.delete('http://localhost:8090/api/deleteHopeBook',{
             params : {hbNo : hbNo },
             responseType: "text",
             headers : { Accept : "text/html; charset=utf-8" }

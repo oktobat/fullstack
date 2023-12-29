@@ -3,11 +3,9 @@ package com.office.library.service;
 import com.office.library.dao.HopeBookDao;
 import com.office.library.dto.HopeBookDto;
 import com.office.library.entity.TblHopeBook;
-import com.office.library.entity.TblPhotoReview;
 import com.office.library.repository.HopeBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class HopeBookService {
 
     @Autowired
     HopeBookRepository hopeBookRepository;
+
     public List<HopeBookDto> selectHopeBooks(){
         List<HopeBookDto> list = hopeBookDao.selectHopeBooks();
         return list;
@@ -36,8 +35,11 @@ public class HopeBookService {
         return hopeBookRepository.save(tblHopeBook);
     }
 
-    public void modifyHopeBook(HopeBookDto hopeBookDto){
-        hopeBookDao.updateHopeBook(hopeBookDto);
-    }
+//    mybatis 프레임워크
+//    public void modifyHopeBook(HopeBookDto hopeBookDto){
+//        hopeBookDao.updateHopeBook(hopeBookDto);
+//    }
+
+
 
 }

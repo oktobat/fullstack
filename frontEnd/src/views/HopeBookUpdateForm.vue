@@ -67,7 +67,7 @@ export default {
             } else if (this.hb_publish_year == '') {
                 alert('INPUT BOOK PUBLISH YEAR.');
             } else {
-                axios.post('http://localhost:8090/api/updateHopeBookConfirm', formData, {
+                axios.put('http://localhost:8090/api/updateHopeBookConfirm', formData, {
                 headers : { 'Content-Type': 'application/json' }
                 })
                 .then((response)=>{
